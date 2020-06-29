@@ -7,6 +7,8 @@ Le but de l'exercice est de construire un modèle de prédiction pour l'oxygène
 L'idée est d'évaluer la qualité du code sur la pipeline de mise en forme de la data jusqu'à la modélisation ainsi que l'utilisation des différents modèles que vous utiliserez. Nous n'attendons pas un résultat parfait,  le but est de surtout voir la maitrise des outils existants et la compréhension des différents modèles.
 Pensez bien à citer les différents tests que vous avez fait pour parvenir au résultat que vous pusherez. 
 
+L'idée est de prendre des slots de 2 jours (48 points) pour prédire les 6 heures suivantes (6 points). 
+
 Pour la restitution du travail, il faudra forker le repo et pusher votre code. 
 Si vous avez la moindre question concernant les données ou les paramètres n'hésitez pas à me contacter. 
 ## Données: 
