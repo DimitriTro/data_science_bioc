@@ -8,6 +8,7 @@ L'idée est d'évaluer la qualité du code sur la pipeline de mise en forme de l
 Pensez bien à citer les différents tests que vous avez fait pour parvenir au résultat que vous pusherez. 
 
 L'idée est de prendre des slots de 2 jours (48 points) pour prédire les 6 heures suivantes (6 points). 
+A partir des données bruts, mettez les en forme pour l'entrainement du modèle en time series, construisez vos train et test sets et appliquez votre modèle.
 
 Pour la restitution du travail, il faudra forker le repo et pusher votre code. 
 Si vous avez la moindre question concernant les données ou les paramètres n'hésitez pas à me contacter. 
