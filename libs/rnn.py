@@ -54,7 +54,11 @@ class RNN:
             epochs:int=10,
             mini_batch_size:int=32,
             learning_rate:float=0.01)->tuple:
-        """[summary]
+        """
+        Apply a mini batch gradient descent on X_train and Y_train. Compute the test cost after each
+        mini batch training. 
+        We use a number of mini batches of X_train.shape[0]//mini_batch_size (+ 1 if rest) for each epoch.
+        Each mini batch is randomly sampled from X_train and Y_train.
 
         Args:
             X_train (np.array): [description]
@@ -66,7 +70,7 @@ class RNN:
             learning_rate (float, optional): [description]. Defaults to 0.01.
 
         Returns:
-            tuple: [description]
+            tuple: [description] the train and test costs
         """        
 
         train_costs =  []
@@ -85,7 +89,6 @@ class RNN:
             for j in range(n_batch):
                 # train
 
-                # x_batch, y_batch = random_sample_batch(X_train, Y_train, mini_batch_size)
                 x_batch, y_batch = shuffle_in_unison(X_train, Y_train)
                 x_batch = x_batch[:mini_batch_size,:,:]
                 y_batch = y_batch[:mini_batch_size,:]

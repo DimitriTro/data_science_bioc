@@ -6,6 +6,7 @@ Creation date: 2020-06-30 17:56:47
 
 import tensorflow as tf
 import numpy as np
+import time
 
 def shuffle_in_unison(a:np.array, b:np.array)->tuple:
     """

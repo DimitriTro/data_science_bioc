@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 
-def generate_XY_continuous_TS(df:pd.DataFrame, w_x:int, w_y:int)->tuple:
+def generate_XY_continuous_TS(df:pd.DataFrame, X_columns:list, Y_columns:list, w_x:int, w_y:int)->tuple:
     """
     Generate to X and Y lists of sliding time series.
     X beeing a list of time series with w_x points
@@ -37,7 +37,7 @@ def generate_XY_continuous_TS(df:pd.DataFrame, w_x:int, w_y:int)->tuple:
     for i in range(len(df) - w_x - w_y):
         df_slice = df.iloc[i: i + w_x + w_y]
         if all(df_slice.index): # check if all time deltas are 1h for that w_x+w_y time series
-            X.append([row.to_list() for _, row in df_slice.iloc[: w_x].iterrows()])
-            Y.append([row.to_list() for _, row in df_slice.iloc[w_x: ].iterrows()])
+            X.append([row[X_columns].to_list() for _, row in df_slice.iloc[: w_x].iterrows()])
+            Y.append([row[Y_columns].to_list() for _, row in df_slice.iloc[w_x: ].iterrows()])
 
     return X, Y
