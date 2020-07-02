@@ -1,26 +1,5 @@
-# data_science_bioc
+# Prediction on Bioceanor time series
 
-## But: 
-
-Vous avez accès à un dataset contenant des données issues de sondes liées à la qualité de l'eau et de données météorologiques liées à la quailité de l'air. 
-Le but de l'exercice est de construire un modèle de prédiction pour l'oxygène dissous. 
-L'idée est d'évaluer la qualité du code sur la pipeline de mise en forme de la data jusqu'à la modélisation ainsi que l'utilisation des différents modèles que vous utiliserez. Nous n'attendons pas un résultat parfait,  le but est de surtout voir la maitrise des outils existants et la compréhension des différents modèles.
-Pensez bien à citer les différents tests que vous avez fait pour parvenir au résultat que vous pusherez. 
-
-L'idée est de prendre des slots de 2 jours (48 points) pour prédire les 6 heures suivantes (6 points). 
-A partir des données bruts, mettez les en forme pour l'entrainement du modèle en time series, construisez vos train et test sets et appliquez votre modèle.
-
-Pour la restitution du travail, il faudra forker le repo et pusher votre code. 
-Si vous avez la moindre question concernant les données ou les paramètres n'hésitez pas à me contacter. 
-## Données: 
-
-Vous possédez les données issues de 5 sondes sur 2 sites différents, les données météo peuvent donc être identiques pour plusieurs device. 
-Les données sont regroupées dans un fichier csv avec les heures de prélèvements et les différent paramètres. 
-
-
-
-### Librairies:
-N'oubliez pas de mettre au mieux un moyen de packager (venv, poetry, pipenv..) ou à minima un fichier requirements pour pouvoir tester les modèles. 
-Pour les librairies vous pouvez utiliser celles avec lesquelles vous êtes le plus à l'aise (Keras, TF, Pytorch). 
-
-![alt text](./plots/cost.png)
+To run the code first create a python 3 environment and install packages using the requirements.txt in the root directory.
+Then just run main.py to get all pre-processing, training, prédiction, validation done.
+In the directory ./plots you'll find the training and test loss and, for each device, the train/test + validation prediction versus real signal.

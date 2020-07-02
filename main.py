@@ -29,6 +29,8 @@ df.Datetime = pd.to_datetime(df.Datetime)
 # -------------------------------------------
 
 # Interpolate the missing values. Ok as they are few and signals should be relatively continuous
+# Interpolation of missing samples regarding an hour sample period is applied in generate_XY_continuous_TS
+# for each device
 df = df.interpolate()
 
 # Add the hour of the day as a feature in order to help caption environmental factors
@@ -43,8 +45,8 @@ df['Hour'] = df['Datetime'].apply(lambda d: d.hour)
 # X are time series of 48 points (hours) and Y are their following 6 points (hours).
 # Split data into devices, all devices, and select some devices from train/test other for validation. 
 
-X_devices_train_test = []
-Y_devices_train_test = []
+# X_devices_train_test = []
+# Y_devices_train_test = []
 X_all_devices_train_test = []
 Y_all_devices_train_test = []
 X_devices_valid = []
@@ -56,6 +58,7 @@ num_columns = ['WaterTemperature', 'DissolvedOxygen',
 w_x = 48
 w_y = 6
 validation_split = 0.3
+interpolate = True
 
 # normalise values in [0, 1] respect to each numerical column
 for col in num_columns:
@@ -74,15 +77,15 @@ Y_columns = ['DissolvedOxygen']
 
 for device in train_test_devices: 
     df_device = df_train_test[df_train_test['device'] == device][['Datetime'] + num_columns].copy()
-    X, Y = generate_XY_continuous_TS(df_device, X_columns, Y_columns, w_x, w_y)
-    X_devices_train_test.append(np.array(X))
-    Y_devices_train_test.append(np.array(Y))
+    X, Y = generate_XY_continuous_TS(df_device, X_columns, Y_columns, w_x, w_y, interpolate)
+    # X_devices_train_test.append(np.array(X))
+    # Y_devices_train_test.append(np.array(Y))
     X_all_devices_train_test.extend(X)
     Y_all_devices_train_test.extend(Y)
 
 for device in validation_devices: 
     df_device = df[df['device'] == device][['Datetime'] + num_columns].copy()
-    X, Y = generate_XY_continuous_TS(df_device, X_columns, Y_columns, w_x, w_y)
+    X, Y = generate_XY_continuous_TS(df_device, X_columns, Y_columns, w_x, w_y, interpolate)
     X_devices_valid.append(np.array(X))
     Y_devices_valid.append(np.array(Y))
 
