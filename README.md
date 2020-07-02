@@ -23,3 +23,4 @@ Les données sont regroupées dans un fichier csv avec les heures de prélèveme
 N'oubliez pas de mettre au mieux un moyen de packager (venv, poetry, pipenv..) ou à minima un fichier requirements pour pouvoir tester les modèles. 
 Pour les librairies vous pouvez utiliser celles avec lesquelles vous êtes le plus à l'aise (Keras, TF, Pytorch). 
 
+![alt text](./plots/cost.png)

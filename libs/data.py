@@ -27,7 +27,7 @@ def generate_XY_continuous_TS(df:pd.DataFrame, X_columns:list, Y_columns:list, w
 
     X = []
     Y = []
-
+    
     df.dropna(inplace=True)
     df['is_good_delta'] = df['Datetime'].diff() == pd.to_timedelta('1h')
     df.set_index('is_good_delta', inplace=True)

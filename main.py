@@ -28,6 +28,9 @@ df.Datetime = pd.to_datetime(df.Datetime)
 # FEATURE ENGINEERING
 # -------------------------------------------
 
+# Interpolate the missing values. Ok as they are few and signals should be relatively continuous
+df = df.interpolate()
+
 # Add the hour of the day as a feature in order to help caption environmental factors
 df['Hour'] = df['Datetime'].apply(lambda d: d.hour)
 
@@ -58,20 +61,18 @@ validation_split = 0.3
 for col in num_columns:
     df[col] = normalize(df[col])
 
-# split the df in train/test and validation only on device 1 and 2 as the other don't have enough data.
-df_slice_345 = df[df['device'].apply(lambda d: d in ['device 3', 'device 4', 'device 5'])].copy()
-df_slice_12 = df[df['device'].apply(lambda d: d in ['device 1', 'device 2'])].copy()
-valid_split_index_12 = int((1 - validation_split)*len(df_slice_12))
-df_train_test = pd.concat([df_slice_345, df_slice_12.iloc[:valid_split_index_12]])
-# df_validation = pd.concat([df_slice_345, df_slice_12.iloc[valid_split_index_12:]])
+# split the df in train/test and validation. Here validation is the entire data as we just
+# use it top have a better view while ploting the prediction.
+valid_split_index = int((1 - validation_split)*len(df))
+df_train_test = pd.concat([df[df['device'] == device].iloc[:valid_split_index] for device in df['device'].unique()])
 
 # gather train/test and validation arrays
-training_devices = ['device 1', 'device 2', 'device 3', 'device 4', 'device 5'] # ['device 1', 'device 2', 'device 3', 'device 4', 'device 5']
-validation_devices = ['device 1', 'device 2']
+train_test_devices = ['device 1', 'device 2', 'device 3', 'device 4', 'device 5'] # ['device 1', 'device 2', 'device 3', 'device 4', 'device 5']
+validation_devices = ['device 1', 'device 2', 'device 3', 'device 4', 'device 5']
 X_columns = num_columns
 Y_columns = ['DissolvedOxygen']
 
-for device in training_devices: 
+for device in train_test_devices: 
     df_device = df_train_test[df_train_test['device'] == device][['Datetime'] + num_columns].copy()
     X, Y = generate_XY_continuous_TS(df_device, X_columns, Y_columns, w_x, w_y)
     X_devices_train_test.append(np.array(X))
@@ -148,8 +149,8 @@ for test_device in validation_devices:
         # plot sampled prediction versus reality
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.plot(one_pred, label='prediction')
         ax.plot(one_real, label='real data')
+        ax.plot(one_pred, label='prediction')
         plt.legend(loc=2)
         plt.axvline(x=len(one_real)*(1-validation_split))
         plt.title(f'Prediction on "{test_device}" and feature "{col}"')
