@@ -107,6 +107,8 @@ print(f'\nY_test shape: {Y_test.shape}')
 # MODEL TRAINING
 # -------------------------------------------
 
+print('\nModel training.')
+
 # Train the model
 hidden_units = [150, 50]
 epochs = 200
@@ -135,6 +137,8 @@ fig.savefig('./plots/cost.png')
 # -------------------------------------------
 # MODEL TESTING
 # -------------------------------------------
+
+print('\nRunning validation.')
 
 for test_device in validation_devices:
     i = validation_devices.index(test_device)

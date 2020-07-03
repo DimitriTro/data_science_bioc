@@ -9,6 +9,7 @@ from libs.utils import weight_variable, bias_variable
 import numpy as np
 from libs.utils import shuffle_in_unison
 
+
 class RNN:
     """
     A generic RNN tensorflow implementation allowing one layer and stacked RNN

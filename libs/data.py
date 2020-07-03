@@ -5,7 +5,6 @@ Creation date: 2020-07-01 09:18:29
 """
 
 import pandas as pd
-import numpy as np
 
 
 def generate_XY_continuous_TS(df:pd.DataFrame, X_columns:list, Y_columns:list, w_x:int, w_y:int, interpolate:bool=True)->tuple:
