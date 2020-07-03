@@ -1,25 +1,24 @@
-# data_science_bioc
+# Data Science Biocéanor
 
-## But: 
+**Installation de l'environnement avec conda pour exécuter les scripts**
 
-Vous avez accès à un dataset contenant des données issues de sondes liées à la qualité de l'eau et de données météorologiques liées à la quailité de l'air. 
-Le but de l'exercice est de construire un modèle de prédiction pour l'oxygène dissous. 
-L'idée est d'évaluer la qualité du code sur la pipeline de mise en forme de la data jusqu'à la modélisation ainsi que l'utilisation des différents modèles que vous utiliserez. Nous n'attendons pas un résultat parfait,  le but est de surtout voir la maitrise des outils existants et la compréhension des différents modèles.
-Pensez bien à citer les différents tests que vous avez fait pour parvenir au résultat que vous pusherez. 
+-- Installer les packages requis   
+`conda env update --name nom_env --file environment.yml`
 
-L'idée est de prendre des slots de 2 jours (48 points) pour prédire les 6 heures suivantes (6 points). 
-A partir des données bruts, mettez les en forme pour l'entrainement du modèle en time series, construisez vos train et test sets et appliquez votre modèle.
+-- Activer l'environnement
+`conda activate nom_env`
 
-Pour la restitution du travail, il faudra forker le repo et pusher votre code. 
-Si vous avez la moindre question concernant les données ou les paramètres n'hésitez pas à me contacter. 
-## Données: 
+-- Tester la version de python (python 3.6 requis) :     
+`python --version`
 
-Vous possédez les données issues de 5 sondes sur 2 sites différents, les données météo peuvent donc être identiques pour plusieurs device. 
-Les données sont regroupées dans un fichier csv avec les heures de prélèvements et les différent paramètres. 
+-- Ajouter l'environnement à jupyter notebook :
+`pip install ipykernel`
+`python -m ipykernel install --user --name=nom_env`
 
+**Organisation du git**
 
-
-### Librairies:
-N'oubliez pas de mettre au mieux un moyen de packager (venv, poetry, pipenv..) ou à minima un fichier requirements pour pouvoir tester les modèles. 
-Pour les librairies vous pouvez utiliser celles avec lesquelles vous êtes le plus à l'aise (Keras, TF, Pytorch). 
-
+-- Le notebook notebook_time_series_forecasting_method contient l'exploration des données et explique la méthodologie utilisée
+-- Le script python create_model_for_each_device.py crée un modèle pour chaque capteur avec les paramètres retenus dans le notebook
+-- Le dossier models contient les modèles entrainés pour chaque capteur
+-- Le dossier loss contient les courbes d'entrainement et de validation de la fonction objectif ou "loss function" pour chaque capteur
+-- Le dossier prediction_example contient les graphiques d'exemples de prédiction pour chaque capteur
