@@ -1,0 +1,21 @@
+[[source]]
+url = "https://${PYPI_USERNAME}:${PYPI_APIKEY}@artifactory.tls.renault.fr/artifactory/api/pypi/pypi/simple"
+verify_ssl = false
+name = "pypi"
+
+[dev-packages]
+coverage = "*"
+
+[packages]
+pandas = "*"
+jupyter = "*"
+notebook = "*"
+plotly = "*"
+sklearn = "*"
+torch = "*"
+tensorflow = "*"
+keras = "*"
+matplotlib = "*"
+
+[requires]
+python_version = "3.5"
