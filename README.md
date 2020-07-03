@@ -26,17 +26,17 @@ Pour les librairies vous pouvez utiliser celles avec lesquelles vous êtes le pl
 ---
 # Installation
 prerequisite pip and python3
->pip install torch==1.5.1+cpu torchvision==0.6.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
->pip install pipenv
->git clone https://github.com/DimitriTro/data_science_bioc.git
->cd data_science_bioc
->pipenv install
+>pip install torch==1.5.1+cpu torchvision==0.6.1+cpu -f https://download.pytorch.org/whl/torch_stable.html \
+>pip install pipenv \
+>git clone https://github.com/DimitriTro/data_science_bioc.git \
+>cd data_science_bioc \
+>pipenv install 
 
 # info
-- I am quite used to pipenv (much lighter version than using conda) therefore you will find a Pipfile to run my jupyter notebook
-- Before this I had never installed jupyter, I always used pycharm, much more convenient when you start to work with a team
+- I am quite used to pipenv (much lighter than using conda) therefore you will find a Pipfile to run my jupyter notebook
+- Before this I had never installed jupyter, I always used pycharm, much more convenient when you start to work with a team and create classes
 - However, I used jupyter notebook when I was working with Databricks which is how to work by default on Azure.
-- I think jupiter makes easier to follow the various implementation I tried, since we get directly the results without necessarily reruning the code
+- I think jupiter makes easier to follow the various implementation I tried, since we get directly the results without necessarily reruning the code, I made comments comments so I hope everything will be clear.
 
 Please find below the various notebook used to analyse, train and test the data
 I started with pytorch and then found a keras lstm
