@@ -1,5 +1,5 @@
 [[source]]
-url = "https://${PYPI_USERNAME}:${PYPI_APIKEY}@artifactory.tls.renault.fr/artifactory/api/pypi/pypi/simple"
+url = "https://pypi.python.org/simple"
 verify_ssl = false
 name = "pypi"
 
