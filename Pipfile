@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = false
+name = "pypi"
+
+[dev-packages]
+coverage = "*"
+
+[packages]
+pandas = "*"
+jupyter = "*"
+notebook = "*"
+plotly = "*"
+sklearn = "*"
+torch = "*"
+tensorflow = "*"
+keras = "*"
+matplotlib = "*"
+
+[requires]
+python_version = "3.5"
